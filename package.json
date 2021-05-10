@@ -2,16 +2,16 @@
   "name": "sport-team-manager",
   "version": "0.0.1",
   "description": "soccer team manager app",
-  "main": "index.ts",
+  "main": "app.ts",
   "scripts": {
     "build-ts": "tsc",
     "debug": "npm run build-ts",
-    "start": "tsc && nodemon run dist/index.js",
+    "start": "tsc && nodemon run dist/app.js",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
-    "watch-node": "nodemon dist/index.js",
+    "watch-node": "nodemon dist/app.js",
     "watch-ts": "tsc -w",
     "deploy": "git add . && git commit -m Heroku && git push heroku master",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/app.ts"
   },
   "author": "Van Goethe",
   "license": "MIT",
