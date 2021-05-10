@@ -3,7 +3,7 @@ const connectDB = require("../config/db");
 
 const app = express();
 
-// connect to mongo atlas database
+// connection to mongo atlas database
 connectDB();
 
 // Init Middleware
