@@ -3,7 +3,7 @@ const connectDB = require("../config/db");
 
 const app = express();
 
-// connect database
+// connect to atlas database
 connectDB();
 
 // Init Middleware
