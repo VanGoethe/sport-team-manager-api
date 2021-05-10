@@ -8,10 +8,11 @@
       "moduleResolution": "node",
       "sourceMap": true,
       "skipLibCheck":true,
-      "outDir": "dist",
+      "rootDir": ".",
+      "outDir": "./dist",
       "baseUrl": ".",
       "paths": {
-          "*": [
+        "@modules/*": [
               "node_modules/*",
               "src/types/*"
           ]
