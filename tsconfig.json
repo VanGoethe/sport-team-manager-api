@@ -18,5 +18,7 @@
           ]
       }
   },
-  "include": [ "config", "models", "controllers", "middleware", "models","app.ts"]
+  "include": ["config/",
+      "src/**/*"
+  ]
 }
