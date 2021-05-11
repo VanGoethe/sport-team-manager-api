@@ -10,7 +10,6 @@
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "watch-node": "nodemon dist/app.js",
     "watch-ts": "tsc -w",
-    "deploy": "git add . && git commit -m Heroku && git push heroku master",
     "dev": "ts-node-dev src/app.ts"
   },
   "author": "Van Goethe",
