@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PORT = void 0;
 const express_1 = __importDefault(require("express"));
-const connectDB = require("../config/db");
-// import { connectDB } from "config/db";
+const connectDB = require("./config/db");
+// import { connectDB } from "../config/db";
 const app = express_1.default();
 // connection to mongo atlas database
 connectDB();

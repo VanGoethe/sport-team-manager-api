@@ -8,16 +8,15 @@
       "moduleResolution": "node",
       "sourceMap": true,
       "skipLibCheck":true,
+      "rootDir": ".",
       "outDir": "dist",
       "baseUrl": ".",
       "paths": {
-        "*": [
+        "@modules/*": [
               "node_modules/*",
               "src/types/*"
           ]
       }
   },
-  "include": [
-      "src/**/*"
-  ]
+  "include": [ "config", "models", "controllers", "middleware", "models","app.ts"]
 }
