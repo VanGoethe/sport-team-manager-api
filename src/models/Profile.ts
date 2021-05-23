@@ -16,6 +16,10 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "player",
   },
+  adress: {
+    type: String,
+    required: true,
+  },
   position: {
     type: Number,
     required: true,

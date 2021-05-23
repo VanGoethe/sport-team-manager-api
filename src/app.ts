@@ -1,8 +1,12 @@
 import express from "express";
+var cors = require("cors");
 const connectDB = require("../config/db");
 // import { connectDB } from "../config/db";
 
 const app = express();
+
+// enable cors for all origins
+app.use(cors());
 
 // connection to mongo atlas database
 connectDB();
