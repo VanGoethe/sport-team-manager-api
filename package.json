@@ -6,7 +6,7 @@
   "scripts": {
     "build-ts": "tsc",
     "debug": "npm run build-ts",
-    "start": "tsc && nodemon run dist/src/app.js",
+    "start": "set NODE_ENV=production&& tsc && nodemon run dist/src/app.js",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "watch-node": "nodemon dist/src/app.js",
     "watch-ts": "tsc -w",
