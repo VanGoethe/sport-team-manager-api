@@ -10,7 +10,7 @@
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "watch-node": "nodemon dist/src/app.js",
     "watch-ts": "tsc -w",
-    "dev": "ts-node-dev app.ts"
+    "dev": "ts-node-dev src/app.ts"
   },
   "author": "Van Goethe",
   "license": "MIT",
@@ -30,6 +30,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@types/cors": "^2.8.10",
     "bcrypt": "^5.0.1",
     "config": "^3.3.6",
     "cors": "^2.8.5",

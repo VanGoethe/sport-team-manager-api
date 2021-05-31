@@ -1,9 +1,18 @@
 import express from "express";
-var cors = require("cors");
+import cors from "cors";
 const connectDB = require("../config/db");
 // import { connectDB } from "../config/db";
 
 const app = express();
+
+// adding cors options
+const corsOptions: cors.CorsOptions = {
+  origin: "*",
+  credentials: true,
+  methods: "GET,HEAD,PUT,PATCH,DELETE,POST",
+  preflightContinue: false,
+  optionsSuccessStatus: 200,
+};
 
 // enable cors for all origins
 app.use(cors());
