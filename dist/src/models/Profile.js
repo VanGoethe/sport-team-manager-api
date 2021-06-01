@@ -9,7 +9,7 @@ const ProfileSchema = new mongoose_1.default.Schema({
         type: mongoose_1.default.Schema.Types.ObjectId,
         ref: "player",
     },
-    adress: {
+    address: {
         type: String,
         required: true,
     },

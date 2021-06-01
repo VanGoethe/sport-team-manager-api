@@ -24,23 +24,27 @@ const Player = require("../models/Player");
 router.post("/:id", [
     auth,
     [
+        express_validator_1.check("address", "Address is required").not().isEmpty(),
         express_validator_1.check("position", "Position is required").not().isEmpty(),
         express_validator_1.check("foot", "Foot is required").not().isEmpty(),
     ],
 ], (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const player_id = req.params.id;
+    console.log(req.body, player_id);
     try {
         yield Player.findOne({ _id: player_id });
         const errors = express_validator_1.validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const { position, foot, joined_at, number_of_contract, last_contract_signed_at, contract_experies_at, } = req.body;
+        const { position, address, foot, joined_at, number_of_contract, last_contract_signed_at, contract_experies_at, } = req.body;
         // Build Profile object
         const profileFields = {};
         profileFields.player = req.params.id;
         if (position)
             profileFields.position = position;
+        if (address)
+            profileFields.address = address;
         if (foot)
             profileFields.foot = foot;
         if (joined_at)
