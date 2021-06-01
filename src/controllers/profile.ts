@@ -15,12 +15,14 @@ router.post(
   [
     auth,
     [
+      check("address", "Address is required").not().isEmpty(),
       check("position", "Position is required").not().isEmpty(),
       check("foot", "Foot is required").not().isEmpty(),
     ],
   ],
   async (req: any, res: any) => {
     const player_id = req.params.id;
+    console.log(req.body, player_id);
     try {
       await Player.findOne({ _id: player_id });
 
