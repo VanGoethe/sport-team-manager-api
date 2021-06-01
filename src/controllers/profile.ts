@@ -31,6 +31,7 @@ router.post(
 
       const {
         position,
+        address,
         foot,
         joined_at,
         number_of_contract,
@@ -42,6 +43,7 @@ router.post(
       const profileFields = {} as ProfileDocument;
       profileFields.player = req.params.id;
       if (position) profileFields.position = position;
+      if (address) profileFields.address = address;
       if (foot) profileFields.foot = foot;
       if (joined_at) profileFields.joined_at = joined_at;
       if (number_of_contract)

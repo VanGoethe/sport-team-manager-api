@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 export type ProfileDocument = mongoose.Document & {
   player: string;
+  address: string;
   position: number;
   foot: string;
   joined_at: Date;
@@ -16,7 +17,7 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "player",
   },
-  adress: {
+  address: {
     type: String,
     required: true,
   },
