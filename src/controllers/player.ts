@@ -84,7 +84,7 @@ router.get("/", auth, async (req: any, res: any) => {
   }
 });
 
-// @route    DELETE api/players/player/:id
+// @route    DELETE api/players/:id
 // @desc     Delete player and his profile
 // @access   Private
 router.delete("/:id", auth, async (req: any, res: any) => {

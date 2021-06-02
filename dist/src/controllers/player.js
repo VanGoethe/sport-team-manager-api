@@ -85,7 +85,7 @@ router.get("/", auth, (req, res) => __awaiter(void 0, void 0, void 0, function* 
         return res.status(500).send("Server error");
     }
 }));
-// @route    DELETE api/players/player/:id
+// @route    DELETE api/players/:id
 // @desc     Delete player and his profile
 // @access   Private
 router.delete("/:id", auth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {

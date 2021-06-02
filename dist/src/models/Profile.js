@@ -43,6 +43,9 @@ const ProfileSchema = new mongoose_1.default.Schema({
         type: Boolean,
         default: false,
     },
+    isActive: {
+        type: Boolean,
+    },
 });
 let Profile;
 module.exports = Profile = mongoose_1.default.model("profile", ProfileSchema);

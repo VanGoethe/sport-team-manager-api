@@ -158,5 +158,21 @@ router.put("/validation/:id", [auth, [express_validator_1.check("status", "statu
         res.status(500).send("server error");
     }
 }));
+// @route    DELETE api/profile/:id
+// @desc     Delete profile
+// @access   Private
+router.delete("/:id", auth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.params.id);
+    try {
+        yield Profile.findOneAndRemove({
+            _id: req.params.id,
+        });
+        res.json({ msg: "profile deleted" });
+    }
+    catch (err) {
+        console.error(err.message);
+        return res.status(500).send("Server error");
+    }
+}));
 module.exports = router;
 //# sourceMappingURL=profile.js.map
