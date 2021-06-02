@@ -10,6 +10,7 @@ export type ProfileDocument = mongoose.Document & {
   last_contract_signed_at: Date;
   contract_experies_at: Date;
   status: boolean;
+  isActif: boolean;
 };
 
 const ProfileSchema = new mongoose.Schema({
@@ -50,6 +51,9 @@ const ProfileSchema = new mongoose.Schema({
   status: {
     type: Boolean,
     default: false,
+  },
+  isActive: {
+    type: Boolean,
   },
 });
 let Profile;

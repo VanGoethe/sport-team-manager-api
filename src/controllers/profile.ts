@@ -169,4 +169,20 @@ router.put(
   }
 );
 
+// @route    DELETE api/profile/:id
+// @desc     Delete profile
+// @access   Private
+router.delete("/:id", auth, async (req: any, res: any) => {
+  console.log(req.params.id);
+  try {
+    await Profile.findOneAndRemove({
+      _id: req.params.id,
+    });
+    res.json({ msg: "profile deleted" });
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;
