@@ -18,6 +18,7 @@ router.post(
       check("address", "Address is required").not().isEmpty(),
       check("position", "Position is required").not().isEmpty(),
       check("foot", "Foot is required").not().isEmpty(),
+      check("isActif", "Actif is required").not().isEmpty(),
     ],
   ],
   async (req: any, res: any) => {
@@ -39,6 +40,7 @@ router.post(
         number_of_contract,
         last_contract_signed_at,
         contract_experies_at,
+        isActif,
       } = req.body;
 
       // Build Profile object
@@ -54,6 +56,7 @@ router.post(
         profileFields.last_contract_signed_at = last_contract_signed_at;
       if (contract_experies_at)
         profileFields.contract_experies_at = contract_experies_at;
+      if (isActif) profileFields.isActif = isActif;
 
       try {
         let profile = await Profile.findOne({ player: req.params.id });

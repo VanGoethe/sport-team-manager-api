@@ -27,6 +27,7 @@ router.post("/:id", [
         express_validator_1.check("address", "Address is required").not().isEmpty(),
         express_validator_1.check("position", "Position is required").not().isEmpty(),
         express_validator_1.check("foot", "Foot is required").not().isEmpty(),
+        express_validator_1.check("isActif", "Actif is required").not().isEmpty(),
     ],
 ], (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const player_id = req.params.id;
@@ -37,7 +38,7 @@ router.post("/:id", [
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const { position, address, foot, joined_at, number_of_contract, last_contract_signed_at, contract_experies_at, } = req.body;
+        const { position, address, foot, joined_at, number_of_contract, last_contract_signed_at, contract_experies_at, isActif, } = req.body;
         // Build Profile object
         const profileFields = {};
         profileFields.player = req.params.id;
@@ -55,6 +56,8 @@ router.post("/:id", [
             profileFields.last_contract_signed_at = last_contract_signed_at;
         if (contract_experies_at)
             profileFields.contract_experies_at = contract_experies_at;
+        if (isActif)
+            profileFields.isActif = isActif;
         try {
             let profile = yield Profile.findOne({ player: req.params.id });
             if (profile) {
