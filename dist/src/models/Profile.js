@@ -45,6 +45,7 @@ const ProfileSchema = new mongoose_1.default.Schema({
     },
     isActive: {
         type: Boolean,
+        required: true,
     },
 });
 let Profile;
