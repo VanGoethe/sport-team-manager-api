@@ -6,10 +6,12 @@ export type ProfileDocument = mongoose.Document & {
   position: number;
   foot: string;
   joined_at: Date;
-  number_of_contract: number;
-  last_contract_signed_at: Date;
-  contract_experies_at: Date;
+  contact: number;
+  // number_of_contract: number;
+  // last_contract_signed_at: Date;
+  // contract_experies_at: Date;
   status: boolean;
+  category: string;
   isActive: boolean;
 };
 
@@ -34,15 +36,18 @@ const ProfileSchema = new mongoose.Schema({
   joined_at: {
     type: Date,
   },
-  number_of_contract: {
-    type: Number,
-    default: 0,
-  },
-  last_contract_signed_at: {
-    type: Date,
-  },
-  contract_experies_at: {
-    type: Date,
+    // number_of_contract: {
+  //   type: Number,
+  //   default: 0,
+  // },
+  // last_contract_signed_at: {
+  //   type: Date,
+  // },
+  // contract_experies_at: {
+  //   type: Date,
+  // },
+  contact: {
+    type:Number,
   },
   created_at: {
     type: Date,
@@ -52,6 +57,11 @@ const ProfileSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  category: {
+    type: String,
+    enum: ["Sage", "Ordinaire", "Sympathisant", "Pépinière"],
+    required: true,
+  },
   isActive: {
     type: Boolean,
     required: true,
@@ -59,3 +69,4 @@ const ProfileSchema = new mongoose.Schema({
 });
 let Profile;
 module.exports = Profile = mongoose.model("profile", ProfileSchema);
+

@@ -18,6 +18,8 @@ router.post(
       check("address", "Address is required").not().isEmpty(),
       check("position", "Position is required").not().isEmpty(),
       check("foot", "Foot is required").not().isEmpty(),
+      check("number", "Phone Number is required").not().isEmpty(),
+      check("category", "Category is required").not().isEmpty(),
       check("isActive", "Active is required").not().isEmpty(),
     ],
   ],
@@ -37,9 +39,11 @@ router.post(
         address,
         foot,
         joined_at,
-        number_of_contract,
-        last_contract_signed_at,
-        contract_experies_at,
+        // number_of_contract,
+        // last_contract_signed_at,
+        // contract_experies_at,
+        contact,
+        category,
         isActive,
       } = req.body;
 
@@ -50,12 +54,14 @@ router.post(
       if (address) profileFields.address = address;
       if (foot) profileFields.foot = foot;
       if (joined_at) profileFields.joined_at = joined_at;
-      if (number_of_contract)
-        profileFields.number_of_contract = number_of_contract;
-      if (last_contract_signed_at)
-        profileFields.last_contract_signed_at = last_contract_signed_at;
-      if (contract_experies_at)
-        profileFields.contract_experies_at = contract_experies_at;
+      // if (number_of_contract)
+      //   profileFields.number_of_contract = number_of_contract;
+      // if (last_contract_signed_at)
+      //   profileFields.last_contract_signed_at = last_contract_signed_at;
+      // if (contract_experies_at)
+      //   profileFields.contract_experies_at = contract_experies_at;
+      if (contact) profileFields.contact = contact;
+      if(category) profileFields.category= category;
       if (isActive) profileFields.isActive = isActive;
 
       try {
