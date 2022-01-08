@@ -59,7 +59,7 @@ const ProfileSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ["Sage", "Ordinaire", "Sympathisant", "Pépinière"],
+    enum: ["sage", "ordinaire", "sympathisant", "pepiniere"],
     required: true,
   },
   isActive: {
