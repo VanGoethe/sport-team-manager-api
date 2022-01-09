@@ -18,7 +18,7 @@ router.post(
       check("address", "Address is required").not().isEmpty(),
       check("position", "Position is required").not().isEmpty(),
       check("foot", "Foot is required").not().isEmpty(),
-      check("number", "Phone Number is required").not().isEmpty(),
+      check("contact", "Phone Number is required").not().isEmpty(),
       check("category", "Category is required").not().isEmpty(),
       check("isActive", "Active is required").not().isEmpty(),
     ],

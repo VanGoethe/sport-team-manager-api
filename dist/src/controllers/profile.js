@@ -27,7 +27,7 @@ router.post("/:id", [
         express_validator_1.check("address", "Address is required").not().isEmpty(),
         express_validator_1.check("position", "Position is required").not().isEmpty(),
         express_validator_1.check("foot", "Foot is required").not().isEmpty(),
-        express_validator_1.check("number", "Phone Number is required").not().isEmpty(),
+        express_validator_1.check("contact", "Phone Number is required").not().isEmpty(),
         express_validator_1.check("category", "Category is required").not().isEmpty(),
         express_validator_1.check("isActive", "Active is required").not().isEmpty(),
     ],
