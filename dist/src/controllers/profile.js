@@ -27,6 +27,8 @@ router.post("/:id", [
         express_validator_1.check("address", "Address is required").not().isEmpty(),
         express_validator_1.check("position", "Position is required").not().isEmpty(),
         express_validator_1.check("foot", "Foot is required").not().isEmpty(),
+        express_validator_1.check("number", "Phone Number is required").not().isEmpty(),
+        express_validator_1.check("category", "Category is required").not().isEmpty(),
         express_validator_1.check("isActive", "Active is required").not().isEmpty(),
     ],
 ], (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -38,7 +40,11 @@ router.post("/:id", [
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const { position, address, foot, joined_at, number_of_contract, last_contract_signed_at, contract_experies_at, isActive, } = req.body;
+        const { position, address, foot, joined_at, 
+        // number_of_contract,
+        // last_contract_signed_at,
+        // contract_experies_at,
+        contact, category, isActive, } = req.body;
         // Build Profile object
         const profileFields = {};
         profileFields.player = req.params.id;
@@ -50,12 +56,16 @@ router.post("/:id", [
             profileFields.foot = foot;
         if (joined_at)
             profileFields.joined_at = joined_at;
-        if (number_of_contract)
-            profileFields.number_of_contract = number_of_contract;
-        if (last_contract_signed_at)
-            profileFields.last_contract_signed_at = last_contract_signed_at;
-        if (contract_experies_at)
-            profileFields.contract_experies_at = contract_experies_at;
+        // if (number_of_contract)
+        //   profileFields.number_of_contract = number_of_contract;
+        // if (last_contract_signed_at)
+        //   profileFields.last_contract_signed_at = last_contract_signed_at;
+        // if (contract_experies_at)
+        //   profileFields.contract_experies_at = contract_experies_at;
+        if (contact)
+            profileFields.contact = contact;
+        if (category)
+            profileFields.category = category;
         if (isActive)
             profileFields.isActive = isActive;
         try {

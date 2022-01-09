@@ -25,15 +25,18 @@ const ProfileSchema = new mongoose_1.default.Schema({
     joined_at: {
         type: Date,
     },
-    number_of_contract: {
+    // number_of_contract: {
+    //   type: Number,
+    //   default: 0,
+    // },
+    // last_contract_signed_at: {
+    //   type: Date,
+    // },
+    // contract_experies_at: {
+    //   type: Date,
+    // },
+    contact: {
         type: Number,
-        default: 0,
-    },
-    last_contract_signed_at: {
-        type: Date,
-    },
-    contract_experies_at: {
-        type: Date,
     },
     created_at: {
         type: Date,
@@ -42,6 +45,11 @@ const ProfileSchema = new mongoose_1.default.Schema({
     status: {
         type: Boolean,
         default: false,
+    },
+    category: {
+        type: String,
+        enum: ["sage", "ordinaire", "sympathisant", "pepiniere"],
+        required: true,
     },
     isActive: {
         type: Boolean,
