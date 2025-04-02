@@ -47,4 +47,6 @@ const connectDB = async () => {
   }
 };
 
+// Use both export styles for maximum compatibility
+module.exports = connectDB;
 export default connectDB;

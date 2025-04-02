@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-const connectDB = require("../config/db");
+import connectDB from "../config/db";
 // import { connectDB } from "../config/db";
 
 const app = express();
