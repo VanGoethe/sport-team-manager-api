@@ -1,23 +1,40 @@
 import { connect } from "mongoose";
 import config from "config";
+import * as dotenv from "dotenv";
+
+// Load environment variables from .env file
+dotenv.config();
 
 const getMongoURI = (): string => {
-  const env = process.env.NODE_ENV || "development";
-  const mongoConfig = config.get("mongoURI") as { [key: string]: string };
-  const uri = mongoConfig[env];
+  // First try to get the URI from environment variables
+  const envURI = process.env.MONGODB_URI;
+  if (envURI) {
+    return envURI;
+  }
 
-  // If the URI is a placeholder for an environment variable, use the environment variable
-  if (uri === "MONGODB_URI") {
-    const envURI = process.env.MONGODB_URI;
-    if (!envURI) {
+  // If no environment variable, try to get from config
+  try {
+    const env = process.env.NODE_ENV || "development";
+    const mongoConfig = config.get("mongoURI") as { [key: string]: string };
+    const uri = mongoConfig[env];
+
+    // If the URI is a placeholder for an environment variable, throw error
+    if (uri === "MONGODB_URI") {
       throw new Error(
         "MONGODB_URI environment variable is required in production"
       );
     }
-    return envURI;
-  }
 
-  return uri;
+    return uri;
+  } catch (error) {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error(
+        "MONGODB_URI environment variable is required in production"
+      );
+    }
+    // Default to local MongoDB in development
+    return "mongodb://localhost:27017/sport-team-manager";
+  }
 };
 
 const connectDB = async () => {
@@ -30,6 +47,13 @@ const connectDB = async () => {
     };
 
     const uri = getMongoURI();
+    console.log(
+      `Attempting to connect to MongoDB at: ${uri.replace(
+        /\/\/([^:]+):([^@]+)@/,
+        "//[HIDDEN_CREDENTIALS]@"
+      )}`
+    );
+
     await connect(uri, mongodbOptions);
 
     console.log(
