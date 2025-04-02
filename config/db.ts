@@ -1,6 +1,24 @@
 import { connect } from "mongoose";
-const config = require("config");
-const db = config.get("mongoURI");
+import config from "config";
+
+const getMongoURI = (): string => {
+  const env = process.env.NODE_ENV || "development";
+  const mongoConfig = config.get("mongoURI") as { [key: string]: string };
+  const uri = mongoConfig[env];
+
+  // If the URI is a placeholder for an environment variable, use the environment variable
+  if (uri === "MONGODB_URI") {
+    const envURI = process.env.MONGODB_URI;
+    if (!envURI) {
+      throw new Error(
+        "MONGODB_URI environment variable is required in production"
+      );
+    }
+    return envURI;
+  }
+
+  return uri;
+};
 
 const connectDB = async () => {
   try {
@@ -11,13 +29,22 @@ const connectDB = async () => {
       useFindAndModify: false,
     };
 
-    await connect(db, mongodbOptions);
-    console.log("Mongodb Connected...");
+    const uri = getMongoURI();
+    await connect(uri, mongodbOptions);
+
+    console.log(
+      `MongoDB Connected (${
+        process.env.NODE_ENV || "development"
+      } environment)...`
+    );
   } catch (error) {
     console.error("MongoDB connection error:", error.message);
-    // Don't exit the process, just log the error
-    // process.exit(1);
+    // In production, we might want to exit if we can't connect to the database
+    if (process.env.NODE_ENV === "production") {
+      console.error("Database connection failed in production - exiting...");
+      process.exit(1);
+    }
   }
 };
 
-module.exports = connectDB;
+export default connectDB;

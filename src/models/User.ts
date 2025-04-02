@@ -3,13 +3,14 @@ import mongoose from "mongoose";
 export type UserDocument = mongoose.Document & {
   email: string;
   password: string;
-  isAdmin: string;
+  isAdmin: boolean;
 };
 
 const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -24,7 +25,7 @@ const UserSchema = new mongoose.Schema({
   },
   isAdmin: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 });
 let User;

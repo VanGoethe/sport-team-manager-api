@@ -1,4 +1,8 @@
 {
-    "mongoURI": "mongodb://localhost:27017/sport-team-manager",
-    "jwtSecret": "akabenzi"
+    "mongoURI": {
+        "development": "mongodb://localhost:27017/sport-team-manager",
+        "production": "MONGODB_URI",
+        "test": "mongodb://localhost:27017/sport-team-manager-test"
+    },
+    "jwtSecret": "JWT_SECRET"
 }
