@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://trezz:trezz123@cluster0.fcpwm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongoURI": "mongodb://localhost:27017/sport-team-manager",
     "jwtSecret": "akabenzi"
 }

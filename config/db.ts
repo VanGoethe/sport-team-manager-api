@@ -12,12 +12,11 @@ const connectDB = async () => {
     };
 
     await connect(db, mongodbOptions);
-
     console.log("Mongodb Connected...");
   } catch (error) {
-    console.error(error.message);
-    // Exit process with failure
-    process.exit(1);
+    console.error("MongoDB connection error:", error.message);
+    // Don't exit the process, just log the error
+    // process.exit(1);
   }
 };
 
